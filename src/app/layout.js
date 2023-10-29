@@ -9,7 +9,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
 	return (
 		<html lang="en">
-			<body className="meshbg text-white scroll-smooth">{children}</body>
+			<body className="text-white scroll-smooth">{children}</body>
 		</html>
 	);
 }
