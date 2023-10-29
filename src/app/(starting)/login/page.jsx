@@ -1,29 +1,52 @@
 "use client";
+import { useRouter } from "next/navigation";
 import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "@/lib/firebase";
 import Image from "next/image";
 import { useState } from "react";
+
 export default function Login() {
+	const router = useRouter(); // Initialize the router
 	const [user, setUser] = useState(null);
+
 	const handleClick = async () => {
 		try {
-			/*This function is for user authentication with firebase.It takes auth and provider as props from firebase.js file
-		  and then the popup windoew opens up.Once sign in is done the response is console logged and user data is stored
-		  in localstorage*/
 			const res = await signInWithPopup(auth, provider);
 			console.log(res.user);
 			setUser(res.user);
 			localStorage.setItem("user", JSON.stringify(res.user));
+
+			// Check if the user's email is present in your database (replace with your actual logic)
+			if (await userEmailIsPresentInDatabase(res.user.email)) {
+				router.push("/askaway"); // Redirect to the 'askaway' route
+			} else {
+				router.push("/add-username"); // Redirect to the 'add-username' route
+			}
 		} catch (err) {
 			console.error(err);
 		}
 	};
+
+	const userEmailIsPresentInDatabase = async (email) => {
+		//By default I am redirecting to the 'add-username' route
+		return false;
+	};
+
 	return (
-		<div className="intro">
+		<div className="meshbg">
+			<div className=" max-h-[10vh] ">
+				<Image
+					src={"/logo.svg"}
+					width={0}
+					height={0}
+					sizes="100vw"
+					className="p-10 min-w-[17rem] md:min-w-[22rem] bg-transparent"
+					alt="Homepage Image"
+				/>
+			</div>
 			<section className="min-h-[90vh] max-h-[100vh] min-w-full flex flex-col lg:flex-row justify-center lg:justify-between items-center p-14 gap-20 lg:gap-0 text-center lg:text-left">
-				{" "}
 				<div>
-					<h1 className="font-bold text-4xl lg:text-7xl tracking-wider bg-transparent">
+					<h1 className="font-bold text-5xl lg:text-7xl tracking-wider bg-transparent">
 						Sign-Up /
 						<span className="bg-transparent ">
 							<span className="font-bold text-[#F06] bg-transparent">
@@ -35,7 +58,7 @@ export default function Login() {
 							</span>{" "}
 						</span>
 					</h1>
-					<p className="pt-10 bg-inherit text-xl pb-10 lg:text-xl">
+					<p className="pt-10 bg-inherit text-2xl pb-10">
 						Your Code Companion: Lets Connect, Learn, Excel Together
 						💪{" "}
 					</p>
