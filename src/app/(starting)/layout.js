@@ -13,17 +13,22 @@ export default function welcome({ children }) {
               width={0}
               height={0}
               sizes="100vw"
-              className="p-7 min-w-[14rem] md:min-w-[22rem] lg:ml-6 lg:min-w-[23rem]"
+              className="p-7 min-w-[14rem] md:min-w-[22rem] lg:ml-6 lg:min-w-[23rem] "
               alt="Homepage Image"
             />
           </a>
           <div className="flex gap-10 text-md  lg:text-xl ">
-            <Link href="/about-us" className=" text-[1rem] lg:text-xl">
-              About us
+            <Link href="/about-us" className=" text-[1rem] lg:text-xl ">
+              {/* hover isnt working */}
+              {/* hover: text-[#F06] */}
+              About
             </Link>
-            <Link href="/support" className=" text-[1rem] lg:text-xl">
+            <Link href="/support" className=" text-[1rem] lg:text-xl ]">
               Support
             </Link>
+            {/* <Link href="/documentations" className=" text-[1rem] lg:text-xl">
+              Documents
+            </Link> */}
             <Image height={0} width={0} sizes="100vw" src={"/user.svg"} />
           </div>
         </div>
