@@ -1,25 +1,39 @@
-"use client";
+"use client"
+import { useRouter } from 'next/navigation'
 import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "@/lib/firebase";
 import Image from "next/image";
 import { useState } from "react";
+
 export default function Login() {
+  const router = useRouter(); // Initialize the router
   const [user, setUser] = useState(null);
+
   const handleClick = async () => {
     try {
-      /*This function is for user authentication with firebase.It takes auth and provider as props from firebase.js file
-		  and then the popup windoew opens up.Once sign in is done the response is console logged and user data is stored
-		  in localstorage*/
       const res = await signInWithPopup(auth, provider);
       console.log(res.user);
       setUser(res.user);
       localStorage.setItem("user", JSON.stringify(res.user));
+
+      // Check if the user's email is present in your database (replace with your actual logic)
+      if (await userEmailIsPresentInDatabase(res.user.email)) {
+        router.push('/askaway'); // Redirect to the 'askaway' route
+      } else {
+        router.push('/add-username'); // Redirect to the 'add-username' route
+      }
     } catch (err) {
       console.error(err);
     }
   };
+
+  const userEmailIsPresentInDatabase = async (email) => {
+    //By default I am redirecting to the 'add-username' route
+   return false;
+  };
+
   return (
-    <div>
+    <div className="meshbg">
       <div className=" max-h-[10vh] ">
         <Image
           src={"/logo.svg"}
@@ -31,7 +45,6 @@ export default function Login() {
         />
       </div>
       <section className="min-h-[90vh] max-h-[100vh] min-w-full flex flex-col lg:flex-row justify-center lg:justify-between items-center p-14 gap-20 lg:gap-0 text-center lg:text-left">
-        {" "}
         <div>
           <h1 className="font-bold text-5xl lg:text-7xl tracking-wider bg-transparent">
             Sign-Up /
