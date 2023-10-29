@@ -27,12 +27,13 @@ export default function Home() {
           <p className="pt-10 text-2xl pb-10">
             Empower, Collaborate, Code: Join the CodeConnect Community🔥
           </p>
-          <button
+          <a
+            href="/login"
             type="button"
-            className=" text-black bg-white hover:opacity-90 border-4 border-t-0 border-l-0 border-b-[#F06] border-r-[#F06]  focus:outline-none font-medium rounded-lg text-md  md:text-lg px-7 py-3.5  text-center inline-flex items-center mr-2 mb-2 "
+            className=" a text-black bg-white hover:opacity-90 border-4 border-t-0 border-l-0 border-b-[#F06] border-r-[#F06]  focus:outline-none font-medium rounded-lg text-md  md:text-lg px-7 py-3.5  text-center inline-flex items-center mr-2 mb-2 "
           >
             Start Here!
-          </button>
+          </a>
         </div>
         <Image
           src={"/homeimage.svg"}

@@ -64,13 +64,15 @@ export default function Welcome() {
               </button>
             ))}
           </div>
-          <button
-            type="button"
-            className=" text-center mt-5 text-4xl font-bold border-4  border-transparent lg:h-[4rem] lg:w-[9rem] bg-[#3F3D56] rounded-full hover:bg-[#C62368]"
-            onClick={handleLogSelectedLanguages}
-          >
-            →
-          </button>
+          <a href="/askaway">
+            <button
+              type="button"
+              className=" text-center mt-5 text-4xl font-bold border-4  border-transparent lg:h-[4rem] lg:w-[9rem] bg-[#3F3D56] rounded-full hover:bg-[#C62368]"
+              onClick={handleLogSelectedLanguages}
+            >
+              →
+            </button>
+          </a>
         </div>
         <Image
           src="/WelcomePageWoman.svg"
