@@ -23,14 +23,16 @@ export default function Welcome() {
     <div>
       <div className="max-h-[10vh] min-w-full flex lg:flex-row">
         <div className="max-h-[10svh] intro">
-          <Image
-            src={"/logo.svg"}
-            width={0}
-            height={0}
-            sizes="100vw"
-            className="p-7 min-w-[17rem] ml-16 md:min-w-[22rem] lg:min-w-[23rem] bg-transparent"
-            alt="Homepage Image"
-          />
+          <a href={"/"}>
+            <Image
+              src={"/logo.svg"}
+              width={0}
+              height={0}
+              sizes="100vw"
+              className="p-7 min-w-[17rem] ml-16 md:min-w-[22rem] lg:min-w-[23rem] bg-transparent"
+              alt="Homepage Image"
+            />
+          </a>
         </div>
       </div>
 
@@ -41,7 +43,7 @@ export default function Welcome() {
       <div className="flex flex-col justify-between p-10 lg:flex-row text-center md:text-left items-center lg:p-16">
         <div>
           <h1 className="text-5xl border-b-4 border-[#C62368] lg:text-7xl font-bold pb-5">
-            Welcome xyz,
+            Welcome {JSON.parse(localStorage.getItem("user")).displayName}
           </h1>
           <h3 className="text-xl pt-5">
             Choose which languages you are comfortable with

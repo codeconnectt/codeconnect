@@ -3,7 +3,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 
 export default function Login() {
-  const [username, setUsername] = useState("");
+	const [username, setUsername] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const [isUsernameTaken, setIsUsernameTaken] = useState(false); // State to track if the username is already taken
 
@@ -28,16 +28,18 @@ export default function Login() {
   };
 
   return (
-    <div>
-      <div className="max-h-[10vh]">
-        <Image
-          src={"/logo.svg"}
-          width={0}
-          height={0}
-          sizes="100vw"
-          className="p-10 min-w-[17rem] md:min-w-[22rem] bg-transparent"
-          alt="Homepage Image"
-        />
+    <div className="meshbg">
+      <div className="max-h-[10svh] intro">
+        <a href={"/"}>
+          <Image
+            src={"/logo.svg"}
+            width={0}
+            height={0}
+            sizes="100vw"
+            className="p-7 pt-16 min-w-[17rem] ml-16 md:min-w-[22rem] lg:min-w-[23rem] bg-transparent"
+            alt="Homepage Image"
+          />
+        </a>
       </div>
       <section className="min-h-[90vh] max-h-[100vh] min-w-full flex flex-col lg:flex-row justify-center lg:justify-between items-center p-14 gap-20 lg:gap-0 text-center lg:text-left">
         <div>
