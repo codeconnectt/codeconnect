@@ -20,22 +20,10 @@ export default function Login() {
   };
   return (
     <div className="meshbg">
-      <div className=" max-h-[10vh] ">
-        <a href={"/"}>
-          <Image
-            src={"/logo.svg"}
-            width={0}
-            height={0}
-            sizes="100vw"
-            className=" ml-7 p-7 pt-16 min-w-[17rem] md:min-w-[22rem] bg-transparent"
-            alt="Homepage Image"
-          />
-        </a>
-      </div>
       <section className="min-h-[90vh] max-h-[100vh] min-w-full flex flex-col lg:flex-row justify-center lg:justify-between items-center p-14 gap-20 lg:gap-0 text-center lg:text-left">
         {" "}
         <div>
-          <h1 className="font-bold text-5xl lg:text-7xl tracking-wider bg-transparent">
+          <h1 className="font-bold text-4xl lg:text-7xl tracking-wider bg-transparent">
             Sign-Up /
             <span className="bg-transparent ">
               <span className="font-bold text-[#F06] bg-transparent">
@@ -45,7 +33,7 @@ export default function Login() {
               <span className=" bg-transparent text-cyan-600">Now! </span>{" "}
             </span>
           </h1>
-          <p className="pt-10 bg-inherit text-2xl pb-10">
+          <p className="pt-10 bg-inherit text-xl pb-10 lg:text-xl">
             Your Code Companion: Lets Connect, Learn, Excel Together 💪{" "}
           </p>
           <button
