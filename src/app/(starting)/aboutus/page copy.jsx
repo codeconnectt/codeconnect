@@ -1,87 +1,99 @@
-"use client";
 import Image from "next/image";
-import React, { useState } from "react";
-
+import Container from "postcss/lib/container";
 export default function Welcome() {
-  const [selectedLanguages, setSelectedLanguages] = useState([]);
-
-  const toggleLanguage = (language) => {
-    if (selectedLanguages.includes(language)) {
-      // If the language is already selected, remove it from the array
-      setSelectedLanguages(
-        selectedLanguages.filter((lang) => lang !== language)
-      );
-    } else {
-      // If the language is not selected, add it to the array
-      setSelectedLanguages([...selectedLanguages, language]);
-    }
-  };
-  const handleLogSelectedLanguages = () => {
-    console.log("Selected Languages:", selectedLanguages);
-  };
   return (
-    <div>
-      <div className="max-h-[10vh] min-w-full flex lg:flex-row">
-        <div className="max-h-[10svh] intro">
-          <a href={"/"}>
-            <Image
-              src={"/logo.svg"}
-              width={0}
-              height={0}
-              sizes="100vw"
-              className="p-7 min-w-[17rem] ml-16 md:min-w-[22rem] lg:min-w-[23rem] bg-transparent"
-              alt="Homepage Image"
-            />
-          </a>
+    <div className=" intro ml-5 mr-5 lg:mr-12 lg:ml-12 flex flex-col justify-center gap-20 items-center">
+      <div>
+        <div className=" pt-9 order-1 flex flex-col lg:flex-row">
+          <Image
+            src={"/About-us-svg-1.svg"}
+            width={0}
+            height={0}
+            sizes={"100vh"}
+            className=" min w-auto lg:w-[30rem] "
+            alt="About-us svg1"
+          ></Image>
+          <div className=" lg:w-[50vw] lg:flex lg:flex-col pl-5 pr-5">
+            <h1 className=" mt-5 text-[2.2rem] lg:text-[4rem] font-bold pb-3 text-[#F06]">
+              About Us:
+            </h1>
+            <span className="text-[1rem] lg:text-[1.2rem]">
+              <p className=" text-[1.25rem] lg:text-[1.5rem] text-[#4285F4]">
+                CodeConnect is a platform by coders and for coders
+              </p>
+              <p>
+                Here at CodeConnect, you can discuss your queries with other
+                like minded people{" "}
+              </p>
+              <p>
+                Filter out the clutter and only focus on queries related to your
+                language of interest, using our Filtering system which allows
+                you to only view what you wish to see
+              </p>
+              <p className=" pt-5">
+                We are your one stop Decode, Discuss, and Delight: Your Coding
+                Community!{" "}
+              </p>
+            </span>
+          </div>
         </div>
       </div>
-
-      <div className="p-4"></div>
-
-      <hr></hr>
-
-      <div className="flex flex-col justify-between p-10 lg:flex-row text-center md:text-left items-center lg:p-16">
-        <div>
-          <h1 className="text-5xl border-b-4 border-[#C62368] lg:text-7xl font-bold pb-5">
-            Welcome {JSON.parse(localStorage.getItem("user")).displayName}
-          </h1>
-          <h3 className="text-xl pt-5">
-            Choose which languages you are comfortable with
-          </h3>
-          <div className="text-xl font-bold flex flex-col lg:flex-row pt-10 gap-10">
-            {["Python", "JavaScript", "Java", "C++"].map((language) => (
+      <div>
+        <div className=" pt-9 order-1 flex flex-col lg:flex-row">
+          <Image
+            src={"/About-us-svg-2.svg"}
+            width={0}
+            height={0}
+            sizes={"100vh"}
+            className=" min w-auto lg:w-[30rem] "
+            alt="About-us svg2"
+          ></Image>
+          <div className=" lg:w-[50vw] lg:flex lg:flex-col pl-5 pr-5">
+            <h1 className=" mt-5 text-[2.2rem] lg:text-[4rem] font-bold text-[#F06] pb-3">
+              What we Offer:
+            </h1>
+            <span className="text-[1rem] lg:text-[1.2rem]">
+              <p className=" text-[#4285F4] text-[1.25rem] lg:text-[1.5rem]">
+                Interactive Coding using CodeMirror:
+              </p>
+              <p>
+                CodeMirror is a versatile, web-based text editor component
+                designed to facilitate interactive coding. It provides a range
+                of features and capabilities to enable developers and users to
+                write and edit code in a web application or website.
+              </p>
+              <a href="https://codemirror.net/">
+                <button
+                  type="button"
+                  className=" text-[1.2rem] mt-4 mb-[3rem] border-4 border-transparent lg:h-[3rem] lg:w-[9rem] bg-[#3F3D56] rounded-full hover:border-[#4285F4]"
+                >
+                  CodeMirror
+                </button>
+              </a>
+              <br />
+            </span>
+            <span className="text-[1rem] lg:text-[1.2rem]">
+              <p className=" text-[#4285F4] text-[1.25rem] lg:text-[1.5rem]">
+                A Forum For everyone
+              </p>
+              <p>
+                CodeConnect as a platform provides a forum for coders of all
+                kinds The language barrier between people of different coding
+                languauges can be daunting, to overcome this, we have a filter
+                system in our forums so our users can only see relevant
+                information
+              </p>
+            </span>
+            <a href="/welcome">
               <button
-                key={language}
                 type="button"
-                className={`border-4 border-transparent lg:h-[4rem] lg:w-[9rem] bg-[#3F3D56] rounded-full hover:border-[#C62368] ${
-                  selectedLanguages.includes(language)
-                    ? "bg-[#C62368] text-white"
-                    : ""
-                }`}
-                onClick={() => toggleLanguage(language)}
+                className=" text-[1.2rem] mt-4 mb-[3rem] border-4 border-transparent lg:h-[3rem] lg:w-[9rem] bg-[#3F3D56] rounded-full hover:border-[#4285F4]"
               >
-                {language}
+                Forum
               </button>
-            ))}
+            </a>
           </div>
-          <a href="/askaway">
-            <button
-              type="button"
-              className=" text-center mt-5 text-4xl font-bold border-4  border-transparent lg:h-[4rem] lg:w-[9rem] bg-[#3F3D56] rounded-full hover:bg-[#C62368]"
-              onClick={handleLogSelectedLanguages}
-            >
-              →
-            </button>
-          </a>
         </div>
-        <Image
-          src="/WelcomePageWoman.svg"
-          width={0}
-          height={0}
-          sizes="100vw"
-          className="w-fit h-auto bg-transparent justify-end order-first lg:max-w-[40rem] lg:w-[38rem] lg:h-[36rem] lg:order-last"
-          alt="Homepage Image"
-        ></Image>
       </div>
     </div>
   );
