@@ -30,7 +30,7 @@ export default function Login() {
 	const userEmailIsPresentInDatabase = async (email) => {
 		//By default I am redirecting to the 'add-username' route
 
-		return false;
+		return true;
 	};
 
 	return (
