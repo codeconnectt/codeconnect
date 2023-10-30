@@ -9,7 +9,7 @@ export default function Login() {
 	const [isUsernameTaken, setIsUsernameTaken] = useState(false); // State to track if the username is already taken
 	const router = useRouter(); // Initialize the router
 	const handleClick = async () => {
-		router.push("/askaway");
+		router.push("/welcome");
 	};
 
 	const handleInputChange = (event) => {
