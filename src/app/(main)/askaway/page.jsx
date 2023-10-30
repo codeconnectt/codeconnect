@@ -95,7 +95,7 @@ export default function Askaway() {
 					closeBrackets: true,
 				}}
 			/>{" "}
-			<button onClick={handleExportCode}>Export as JSON</button>
+			<button onClick={handleExportCode}>Ask Away!</button>
 		</div>
 	);
 }

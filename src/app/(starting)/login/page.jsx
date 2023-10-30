@@ -16,11 +16,8 @@ export default function Login() {
 			console.log(res.user);
 			setUser(res.user);
 			localStorage.setItem("user", JSON.stringify(res.user));
-			const data = await getData();
-			console.log(data);
-			console.log("sex??");
 			// Check if the user's email is present in your database (replace with your actual logic)
-			if (await data) {
+			if (await userEmailIsPresentInDatabase) {
 				router.push("/askaway"); // Redirect to the 'askaway' route
 			} else {
 				router.push("/add-username"); // Redirect to the 'add-username' route
@@ -32,6 +29,7 @@ export default function Login() {
 
 	const userEmailIsPresentInDatabase = async (email) => {
 		//By default I am redirecting to the 'add-username' route
+
 		return false;
 	};
 

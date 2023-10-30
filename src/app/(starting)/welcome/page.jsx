@@ -3,10 +3,10 @@ import Image from "next/image";
 import React, { useState, useEffect } from "react";
 
 export default function Welcome() {
-	const [item,setItem]=useState(null)
+	const [item, setItem] = useState();
 	useEffect(() => {
 		// Perform localStorage action
-		setItem( JSON.parse(localStorage.getItem("user")).displayName );
+		setItem(JSON.parse(localStorage.getItem("user")));
 	}, []);
 	const [selectedLanguages, setSelectedLanguages] = useState([]);
 
@@ -23,14 +23,14 @@ export default function Welcome() {
 	};
 	const handleLogSelectedLanguages = () => {
 		console.log("Selected Languages:", selectedLanguages);
+		setItem({ ...item, languages: selectedLanguages });
 	};
 	return (
 		<div className="intro">
 			<div className="flex flex-col justify-between p-10 lg:flex-row text-center md:text-left items-center lg:p-16">
 				<div>
 					<h1 className="text-5xl border-b-4 border-[#C62368] lg:text-7xl font-bold pb-5">
-						Welcome{" "}
-						{item}
+						Welcome {item ? item.displayName : ""}
 					</h1>
 					<h3 className="text-xl pt-5">
 						Choose which languages you are comfortable with
