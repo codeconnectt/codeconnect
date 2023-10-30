@@ -3,10 +3,10 @@ import Image from "next/image";
 import React, { useState, useEffect } from "react";
 
 export default function Welcome() {
-	var item;
+	const [item,setItem]=useState(null)
 	useEffect(() => {
 		// Perform localStorage action
-		item = localStorage.getItem("user");
+		setItem( JSON.parse(localStorage.getItem("user")).displayName );
 	}, []);
 	const [selectedLanguages, setSelectedLanguages] = useState([]);
 
@@ -30,7 +30,7 @@ export default function Welcome() {
 				<div>
 					<h1 className="text-5xl border-b-4 border-[#C62368] lg:text-7xl font-bold pb-5">
 						Welcome{" "}
-						{JSON.parse(localStorage.getItem("user")).displayName}
+						{item}
 					</h1>
 					<h3 className="text-xl pt-5">
 						Choose which languages you are comfortable with

@@ -4,13 +4,7 @@ import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "@/lib/firebase";
 import Image from "next/image";
 import { useState } from "react";
-import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
 
-export async function getData() {
-	const emails = await prisma.User.findMany("email");
-	return emails;
-}
 
 export default function Login() {
 	const router = useRouter(); // Initialize the router
