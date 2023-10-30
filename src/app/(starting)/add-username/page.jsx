@@ -1,33 +1,36 @@
 "use client";
 import Image from "next/image";
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Login() {
 	const [username, setUsername] = useState("");
-  const [isTyping, setIsTyping] = useState(false);
-  const [isUsernameTaken, setIsUsernameTaken] = useState(false); // State to track if the username is already taken
+	const [isTyping, setIsTyping] = useState(false);
+	const [isUsernameTaken, setIsUsernameTaken] = useState(false); // State to track if the username is already taken
+	const router = useRouter(); // Initialize the router
+	const handleClick = async () => {
+		router.push("/askaway");
+	};
 
-  const handleClick = async () => {};
+	const handleInputChange = (event) => {
+		const inputText = event.target.value;
+		setUsername(inputText);
+		setIsTyping(inputText.length > 0);
+		setIsUsernameTaken(false);
+	};
 
-  const handleInputChange = (event) => {
-    const inputText = event.target.value;
-    setUsername(inputText);
-    setIsTyping(inputText.length > 0);
-    setIsUsernameTaken(false);
-  };
+	const checkUsernameAvailability = async (username) => {
+		try {
+			const response = await fetch(`/api/users?username=${username}`);
+			const data = await response.json();
+			return data.exists;
+		} catch (error) {
+			console.error(error);
+			return false;
+		}
+	};
 
-  const checkUsernameAvailability = async (username) => {
-    try {
-      const response = await fetch(`/api/users?username=${username}`);
-      const data = await response.json();
-      return data.exists;
-    } catch (error) {
-      console.error(error);
-      return false;
-    }
-  };
-
-  return (
+	return (
 		<div className="intro">
 			<section className="min-h-[90vh] max-h-[100vh] min-w-full flex flex-col lg:flex-row justify-center lg:justify-between items-center p-14 gap-20 lg:gap-0 text-center lg:text-left intro">
 				<div>
@@ -68,5 +71,5 @@ export default function Login() {
 				/>
 			</section>
 		</div>
-  );
+	);
 }

@@ -5,7 +5,6 @@ import { auth, provider } from "@/lib/firebase";
 import Image from "next/image";
 import { useState } from "react";
 
-
 export default function Login() {
 	const router = useRouter(); // Initialize the router
 	const [user, setUser] = useState(null);
@@ -17,11 +16,7 @@ export default function Login() {
 			setUser(res.user);
 			localStorage.setItem("user", JSON.stringify(res.user));
 			// Check if the user's email is present in your database (replace with your actual logic)
-			if (await userEmailIsPresentInDatabase) {
-				router.push("/askaway"); // Redirect to the 'askaway' route
-			} else {
-				router.push("/add-username"); // Redirect to the 'add-username' route
-			}
+			router.push("/add-username")
 		} catch (err) {
 			console.error(err);
 		}
@@ -30,12 +25,11 @@ export default function Login() {
 	const userEmailIsPresentInDatabase = async (email) => {
 		//By default I am redirecting to the 'add-username' route
 
-		return true;
+		return false;
 	};
 
 	return (
 		<div Name="meshbg">
-			
 			<section className="min-h-[90vh] max-h-[100vh] min-w-full flex flex-col lg:flex-row justify-center lg:justify-between items-center p-14 gap-20 lg:gap-0 text-center lg:text-left">
 				<div>
 					<h1 className="font-bold text-5xl lg:text-7xl tracking-wider bg-transparent">
