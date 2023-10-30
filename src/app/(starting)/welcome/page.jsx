@@ -24,6 +24,9 @@ export default function Welcome() {
 	const handleLogSelectedLanguages = () => {
 		console.log("Selected Languages:", selectedLanguages);
 		setItem({ ...item, languages: selectedLanguages });
+		localStorage.setItem("user",
+			JSON.stringify({ ...item, "langauges": selectedLanguages })
+		);
 	};
 	return (
 		<div className="intro">

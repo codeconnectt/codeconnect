@@ -20,7 +20,8 @@
 		"next": "13.5.6",
 		"react": "^18",
 		"react-dom": "^18",
-		"react-monaco-editor": "^0.54.0"
+		"react-monaco-editor": "^0.54.0",
+		"uuid": "^9.0.1"
 	},
 	"devDependencies": {
 		"autoprefixer": "^10",

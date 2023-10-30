@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import {
 	loadLanguage,
@@ -16,8 +16,14 @@ export default function Answer() {
 	const [anscode, setansCode] = useState(
 		"console.log('Such nice of you to help this fine chap!');"
 	);
-	const [isTyping, setIsTyping] = useState(true);
+	const [ans1code, setans1Code] = useState("print('hello world')");
 
+	const [isTyping, setIsTyping] = useState(true);
+	const [item, setItem] = useState();
+	useEffect(() => {
+		// Perform localStorage action
+		setItem(JSON.parse(localStorage.getItem("user")));
+	}, []);
 	const handleExportCode = async () => {
 		// Create a JSON object with the data
 		const jsonData = {
@@ -51,34 +57,29 @@ export default function Answer() {
 			<h1 className="font-bold text-4xl lg:text-8xl">Answer Doubts!</h1>
 			<div className="flex flex-col lg:flex-row text-center lg:text-left min-h-[35vw] border-4 border-[#4285F4] rounded-xl justify-center gap-5 p-10 items-center ">
 				<div className=" flex flex-col pr-10 items-center ">
-					<Image
-						src={"/logo.svg"}
+					<img
+						src={item ? item.photoURL : ""}
 						height={0}
 						width={0}
 						sizes="100vw"
 						className=" rounded-full w-44  "
-					></Image>
-					<p className=" text-xl pt-4">Display Name</p>
+					></img>
+					<p className=" text-xl pt-4">
+						{item ? item.displayName : ""}
+					</p>
 				</div>
 				<div className="h-[2px] bg-slate-300 w-full lg:hidden"></div>
 				<div className="text-lg lg:text-2xl max-w-[90ch] flex gap-10 flex-col">
-					<h2 className="font-bold pb-5 ">Error Name</h2>
+					<h2 className="font-bold pb-5 "> My amazing doubt!</h2>
 					<p className="">
-						{" "}
-						Amet id dolore aute ut aliquip culpa magna minim
-						reprehenderit elit laboris fugiat aliquip. Elit velit
-						esse ullamco incididunt Lorem anim consectetur in eu
-						adipisicing in amet. Ad duis labore exercitation id
-						cillum nulla elit irure eu. Proident dolore deserunt
-						consectetur dolore quis consectetur id consequat id
-						irure sunt aliqua.{" "}
+						So python print is not working, help me, bellow is my
+						code:
 					</p>
 					<CodeMirror
 						value={code}
 						className=" h-[20rem] rounded-md border-[2px] border-white text-base lg:text-xl leading-[10] tracking-wide font-medium"
 						height="100%"
-						onChange={onChange}
-						extensions={[loadLanguage("java")]}
+						extensions={[loadLanguage("javascript")]}
 						theme={themes.vscodeDark}
 						basicSetup={{
 							foldGutter: true,
@@ -89,10 +90,50 @@ export default function Answer() {
 							lineWrapping: true,
 							indentWithTabs: true,
 							closeBrackets: true,
+							readOnly: true,
 						}}
 					/>{" "}
 				</div>
 			</div>
+			<div className="flex flex-col lg:flex-row text-center lg:text-left min-h-[35vw] border-4 border-[#4285F4] rounded-xl justify-center gap-5 p-10 items-center ">
+				<div className=" flex flex-col pr-10 items-center ">
+					<img
+						src="https://img.freepik.com/free-photo/worldface-british-guy-white-background_53876-146315.jpg"
+						height={0}
+						width={0}
+						sizes="100vw"
+						className=" rounded-full w-44  "
+					></img>
+					<p className=" text-xl pt-4">Jackson j</p>
+				</div>
+				<div className="h-[2px] bg-slate-300 w-full lg:hidden"></div>
+				<div className="text-lg lg:text-2xl max-w-[90ch] flex gap-10 flex-col">
+					<h2 className="font-bold pb-5 "> Your answer</h2>
+					<p className="">
+						So python print is not working, because your syntax is
+						for javascript, here is the fixed code
+					</p>
+					<CodeMirror
+						value={ans1code}
+						className=" h-[20rem] rounded-md border-[2px] border-white text-base lg:text-xl leading-[10] tracking-wide font-medium"
+						height="100%"
+						extensions={[loadLanguage("python")]}
+						theme={themes.vscodeDark}
+						basicSetup={{
+							foldGutter: true,
+							dropCursor: true,
+							allowMultipleSelections: true,
+							indentOnInput: true,
+							lineNumbers: true,
+							lineWrapping: true,
+							indentWithTabs: true,
+							closeBrackets: true,
+							readOnly: true,
+						}}
+					/>{" "}
+				</div>
+			</div>
+
 			{isTyping ? (
 				<button
 					className="bg-transparent border-2 border-[#FF0066] p-6 w-full outline-none rounded-full font-extralight text-md md:text-3xl text-slate-50 "
@@ -102,7 +143,7 @@ export default function Answer() {
 					Enter Answer here...
 				</button>
 			) : (
-				<div className="text-center lg:text-left min-h-[35vw] border-4 border-[#4285F4] rounded-xl justify-center gap-5 p-10 items-center ">
+				<div className="text-center lg:text-left min-h-[35vw] border-4 border-red-700 rounded-xl justify-center gap-5 p-10 items-center ">
 					<span className="flex flex-col md:flex-row md:items-center">
 						<h2 className="inline font-bold text-xl lg:text-4xl p-5 ">
 							Title:{" "}
