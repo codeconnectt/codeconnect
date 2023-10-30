@@ -7,10 +7,10 @@ import {
 } from "@uiw/codemirror-extensions-langs";
 import * as themes from "@uiw/codemirror-themes-all";
 import CodeMirror from "@uiw/react-codemirror";
-
 export default function Askaway() {
 	const [title, setTitle] = useState("");
 	const [description, setDescription] = useState("");
+	
 	const [code, setCode] = useState("console.log('hello world!');");
 
 	const onChange = (val, viewUpdate) => {

@@ -4,6 +4,13 @@ import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "@/lib/firebase";
 import Image from "next/image";
 import { useState } from "react";
+import { PrismaClient } from "@prisma/client";
+const prisma = new PrismaClient();
+
+export async function getData() {
+	const emails = await prisma.User.findMany("email");
+	return emails;
+}
 
 export default function Login() {
 	const router = useRouter(); // Initialize the router
@@ -15,9 +22,11 @@ export default function Login() {
 			console.log(res.user);
 			setUser(res.user);
 			localStorage.setItem("user", JSON.stringify(res.user));
-
+			const data = await getData();
+			console.log(data);
+			console.log("sex??");
 			// Check if the user's email is present in your database (replace with your actual logic)
-			if (await userEmailIsPresentInDatabase(res.user.email)) {
+			if (await data) {
 				router.push("/askaway"); // Redirect to the 'askaway' route
 			} else {
 				router.push("/add-username"); // Redirect to the 'add-username' route
@@ -33,17 +42,8 @@ export default function Login() {
 	};
 
 	return (
-		<div className="meshbg">
-			<div className=" max-h-[10vh] ">
-				<Image
-					src={"/logo.svg"}
-					width={0}
-					height={0}
-					sizes="100vw"
-					className="p-10 min-w-[17rem] md:min-w-[22rem] bg-transparent"
-					alt="Homepage Image"
-				/>
-			</div>
+		<div Name="meshbg">
+			
 			<section className="min-h-[90vh] max-h-[100vh] min-w-full flex flex-col lg:flex-row justify-center lg:justify-between items-center p-14 gap-20 lg:gap-0 text-center lg:text-left">
 				<div>
 					<h1 className="font-bold text-5xl lg:text-7xl tracking-wider bg-transparent">

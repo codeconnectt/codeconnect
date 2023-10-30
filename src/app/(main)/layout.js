@@ -12,12 +12,12 @@ export default function welcome({ children }) {
 						width={0}
 						height={0}
 						sizes="100vw"
-						className="p-7 min-w-[14rem] md:min-w-[22rem] lg:min-w-[23rem]"
+						className="p-7 lg:ml-14 min-w-[14rem] md:min-w-[22rem] lg:min-w-[23rem]"
 						alt="Homepage Image"
 					/>
 					<div className="flex gap-10 text-md  lg:text-xl ">
-						<Link href="/home">Doubts</Link>
-						<Link href="/home">Profile</Link>
+						<Link href="/doubts">Doubts</Link>
+						<Link href="/profile">Profile</Link>
 						<Image
 							height={0}
 							width={0}
