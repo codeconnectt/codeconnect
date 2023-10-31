@@ -102,7 +102,7 @@ export default function Welcome() {
 						<button type="button"></button>
 					</div>
 					<div className="flex flex-col lg:flex-row justify-between gap-8">
-						<a href="mailto:yashdeshpande714@gmail.com?subject=SUBJECT&body=BODY">
+						<a href="mailto:ashmit27j@gmail.com?subject=SUBJECT&body=BODY">
 							<button
 								type="button"
 								className=" h-[3rem] w-[9.5rem] text-center mt-0 lg:mt-5 text-xl font-bold border-4  border-transparent lg:h-[4rem] lg:w-[9rem] bg-[#F06] rounded-full hover:bg-[red]"
